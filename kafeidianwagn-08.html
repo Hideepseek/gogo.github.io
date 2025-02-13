@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>咖啡店主页</title>
+    
+    <!-- 引入 GSAP 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+    
+    <!-- 引入字体库 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"  rel="stylesheet">
+    
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+ 
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+ 
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+ 
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+ 
+        .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+ 
+        .nav-links a:hover {
+            color: #666;
+            transform: translateY(-2px);
+        }
+ 
+        /* 轮播图样式 */
+        .carousel {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .carousel-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img2.baidu.com/it/u=4131701278,4241656452&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500'); 
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+        }
+ 
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+        }
+ 
+        .carousel-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+ 
+        .carousel-button {
+            padding: 15px 40px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+ 
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+ 
+        /* 咖啡起源介绍样式 */
+        .origin {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+ 
+        .origin h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+ 
+        .origin p {
+            line-height: 1.6;
+            color: #666;
+        }
+ 
+        /* 种植场景图样式 */
+        .plantation-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+ 
+        .image-item {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+ 
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+ 
+        /* 产品记录图样式 */
+        .product-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+ 
+        /* 底部信息样式 */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 50px;
+            text-align: center;
+        }
+ 
+        .footer p {
+            margin-bottom: 20px;
+        }
+ 
+        .social-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">LITTLE COFFEE</div>
+        <div class="nav-links">
+            <a href="#home">首页</a>
+            <a href="#about">关于我们</a>
+            <a href="#products">产品</a>
+            <a href="#contact">联系我们</a>
+        </div>
+    </nav>
+ 
+    <!-- 轮播图 -->
+    <div class="carousel">
+        <div class="carousel-background"></div>
+        <div class="carousel-content">
+            <h2 class="carousel-title">一杯好咖啡，从源头开始</h2>
+            <button class="carousel-button">了解更多</button>
+        </div>
+    </div>
+ 
+    <!-- 咖啡起源介绍 -->
+    <div class="origin">
+        <h2>咖啡的起源</h2>
+        <p>
+            咖啡的历史可以追溯到公元9世纪的非洲埃塞俄比亚高原。传说中，一位名叫卡尔迪的牧羊人发现他的羊群在食用了一种红色浆果后异常兴奋。他尝试了这种浆果，并发现了其提神醒脑的效果。这种浆果后来被称为“咖啡豆”。
+            
+            15世纪初，咖啡传播到阿拉伯半岛，并在也门的摩卡港建立了第一个咖啡交易市场。17世纪起，咖啡逐渐传入欧洲，并迅速成为贵族和社会名流的饮品。如今，咖啡已经成为全球最受欢迎的饮品之一，其文化内涵和制作工艺也在不断演变。
+        </p>
+    </div>
+ 
+    <!-- 种植场景图 -->
+    <div class="plantation-images">
+        <img src="https://img2.baidu.com/it/u=2453125667,4108193621&fm=253&fmt=auto&app=138&f=JPEG?w=712&h=413"  alt="咖啡树" class="image-item">
+        <img src="https://img0.baidu.com/it/u=2753274460,242847651&fm=253&fmt=auto?w=1200&h=800"  alt="采摘咖啡豆" class="image-item">
+        <img src="https://kisscocoa.cn/1/images/5/de/coppeneur/coppeneur24.jpg"  alt="晾晒咖啡豆" class="image-item">
+    </div>
+ 
+    <!-- 产品记录图 -->
+    <div class="product-images">
+        <img src="https://img2.baidu.com/it/u=4013824546,3341896987&fm=253&fmt=auto&app=120&f=JPEG?w=1199&h=800"  alt="手冲咖啡" class="image-item">
+        <img src="https://t7.baidu.com/it/u=3319061915,531710568&fm=193"  alt="意式浓缩" class="image-item">
+        <img src="https://img1.baidu.com/it/u=2157327228,2766683310&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1062"  alt="冷萃咖啡" class="image-item">
+    </div>
+ 
+    <!-- 底部信息 -->
+    <div class="footer">
+        <p>© 2025 LITTLE COFFEE. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">微信</a>
+            <a href="#">微博</a>
+            <a href="#">Instagram</a>
+        </div>
+    </div>
+ 
+    <script>
+        // GSAP 动画效果 
+        gsap.from(".carousel-content",  {
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            ease: "power4.out" 
+        });
+ 
+        gsap.from(".origin",  {
+            duration: 1,
+            x: -100,
+            opacity: 0,
+            ease: "power4.out", 
+            delay: 0.5 
+        });
+ 
+        gsap.from(".plantation-images  img", {
+            duration: 1,
+            scale: 0.8,
+            opacity: 0,
+            ease: "power4.out", 
+            stagger: 0.2 
+        });
+ 
+        gsap.from(".product-images  img", {
+            duration: 1,
+            scale: 0.8,
+            opacity: 0,
+            ease: "power4.out", 
+            stagger: 0.2 
+        });
+ 
+        // 悬停动画 
+        document.querySelectorAll('.image-item').forEach(img  => {
+            img.addEventListener('mouseenter',  () => {
+                gsap.to(img,  {
+                    duration: 0.5,
+                    scale: 1.05,
+                    ease: "sine.inOut" 
+                });
+            });
+ 
+            img.addEventListener('mouseleave',  () => {
+                gsap.to(img,  {
+                    duration: 0.5,
+                    scale: 1,
+                    ease: "sine.inOut" 
+                });
+            });
+        });
+ 
+        // 按钮点击效果 
+        document.querySelector('.carousel-button').addEventListener('click',  function() {
+            gsap.to(this,  {
+                duration: 0.3,
+                scale: 1.1,
+                ease: "sine.inOut", 
+                onComplete: () => {
+                    gsap.to(this,  {duration: 0.3, scale: 1});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
