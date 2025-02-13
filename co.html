@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>咖啡店主页</title>
+    
+    <!-- 引入 GSAP 库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>  
+    
+    <!-- 引入字体库 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"  rel="stylesheet">
+    
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+ 
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+ 
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+ 
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+ 
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+ 
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+ 
+        .nav-links a:hover {
+            color: #666;
+            transform: translateY(-2px);
+        }
+ 
+        /* 轮播图样式 */
+        .carousel {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+ 
+        .carousel-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://img2.baidu.com/it/u=4131701278,4241656452&fm=253&fmt=auto&app=138&f=JPEG?w=667&h=500'); 
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+        }
+ 
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            opacity: 0;
+        }
+ 
+        .carousel-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+ 
+        .carousel-button {
+            padding: 12px 30px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+ 
+        .carousel-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+ 
+        /* 咖啡起源介绍样式 */
+        .origin {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+ 
+        .origin h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+ 
+        .origin p {
+            line-height: 1.6;
+            color: #666;
+        }
+ 
+        /* 种植场景图样式 */
+        .plantation-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+ 
+        .image-item {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+ 
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+ 
+        /* 产品记录图样式 */
+        .product-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+ 
+        /* 底部信息样式 */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+ 
+        .footer p {
+            margin-bottom: 20px;
+        }
+ 
+        .social-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+ 
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+ 
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+ 
+            .carousel-title {
+                font-size: 28px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+ 
+            .origin h2 {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+ 
+            .origin p {
+                font-size: 16px;
+                line-height: 1.5;
+                text-align: justify;
+            }
+ 
+            .plantation-images,
+            .product-images {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+                padding: 15px;
+                max-width: none !important;
+                width: calc(100% + 30px);
+                margin-left: -15px;
+                margin-right: -15px;
+            }
+ 
+            .image-item {
+                height: auto !important;
+                min-height: 200px !important;
+                aspect-ratio: 4/3 !important;
+                object-fit: cover !important;
+                width: calc((100% - (n - 1)*gap)/n) !important;
+                box-sizing: border-box !important;
+                border-radius: 8px !important;
+                transition-duration: 0.3s !important;
+                transition-property: transform !important;
+                transition-timing-function: ease-in-out !important;
+                cursor-pointer !important;
+                touch-action-manipulation !important;
+                user-select-none !important;
+                -webkit-user-drag-none !important;
+                -webkit-user-select-none !important;
+                -webkit-touch-calloutnone !important;
+                -webkit-tap-highlight-colorrgba(0,0,0,0) !important;
+                -webkit-transform-stylepreserve-3d !important;
+                backface-visibilityhidden !important;
+                perspective1e3 !important;
+                transform-stylepreserve-3d !important;
+                will-changeauto !important;
+                transform-origincenter center !important;
+                transition-delayinitial !important;
+                transition-timing-functionlinear !important;
+                transition-durationinitial !important;
+                transition-propertyinitial !important;
+                transition-initialinitial !important;
+                transition-allinitial !important;
+                transition-initialinitial !important;
+                transition-delayinitial !important;
+                transition-durationinitial !important;
+                transition-propertyinitial !important;
+                transition-timing-functioninitial !important;
+                transition-initialinitial !important;
+                transition-allinitial !important;
+                transition-initialinitial !important;
+                transition-delayinitial !important;
+                transition-durationinitial !important;
+                transition-propertyinitial !important;
+                transition-timing-functioninitial !important;
+                transition-initialinitial !important;
+                transition-allinitial !important;
+ 
