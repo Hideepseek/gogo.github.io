@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>咖啡配方</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .recipe-card {
+            background-color: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: row;
+            padding: 20px;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .recipe-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-width: 300px;
+            margin-right: 20px;
+        }
+
+        .recipe-info {
+            max-width: 600px;
+        }
+
+        .recipe-info h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .recipe-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .recipe-info table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .recipe-info th, .recipe-info td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .recipe-info th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+
+        .recipe-info td {
+            background-color: #f9f9f9;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>咖啡配方大全</h1>
+    </header>
+
+    <div class="container">
+        <!-- 咖啡配方 1 -->
+        <div class="recipe-card">
+            <div class="recipe-image">
+                <img src="https://img1.baidu.com/it/u=2195930501,4253629450&fm=253&fmt=auto&app=138&f=JPEG?w=700&h=467" alt="浓缩咖啡">
+            </div>
+            <div class="recipe-info">
+                <h2>浓缩咖啡 (Espresso)</h2>
+                <p>一种强烈且浓郁的咖啡，通过高压水流快速通过细磨咖啡豆制作而成，拥有独特的口感。</p>
+                <table>
+                    <tr>
+                        <th>配料</th>
+                        <th>用量</th>
+                    </tr>
+                    <tr>
+                        <td>咖啡豆</td>
+                        <td>18克</td>
+                    </tr>
+                    <tr>
+                        <td>水</td>
+                        <td>50毫升</td>
+                    </tr>
+                    <tr>
+                        <td>萃取时间</td>
+                        <td>25-30秒</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 咖啡配方 2 -->
+        <div class="recipe-card">
+            <div class="recipe-image">
+                <img src="https://img2.baidu.com/it/u=969370639,1549349416&fm=253&fmt=auto&app=120&f=JPEG?w=1198&h=800" alt="拿铁">
+            </div>
+            <div class="recipe-info">
+                <h2>拿铁 (Latte)</h2>
+                <p>一种顺滑、奶香浓郁的咖啡饮品，由浓缩咖啡和蒸汽牛奶混合而成，顶部加上一层轻薄泡沫。</p>
+                <table>
+                    <tr>
+                        <th>配料</th>
+                        <th>用量</th>
+                    </tr>
+                    <tr>
+                        <td>浓缩咖啡</td>
+                        <td>1份（30毫升）</td>
+                    </tr>
+                    <tr>
+                        <td>蒸汽牛奶</td>
+                        <td>200毫升</td>
+                    </tr>
+                    <tr>
+                        <td>泡沫</td>
+                        <td>轻薄</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- 咖啡配方 3 -->
+        <div class="recipe-card">
+            <div class="recipe-image">
+                <img src="https://img1.baidu.com/it/u=2157327228,2766683310&fm=253&fmt=auto&app=120&f=JPEG?w=800&h=1062" alt="卡布奇诺">
+            </div>
+            <div class="recipe-info">
+                <h2>卡布奇诺 (Cappuccino)</h2>
+                <p>经典的意式咖啡，由等量的浓缩咖啡、蒸汽牛奶和奶泡组成，口感平衡、细腻。</p>
+                <table>
+                    <tr>
+                        <th>配料</th>
+                        <th>用量</th>
+                    </tr>
+                    <tr>
+                        <td>浓缩咖啡</td>
+                        <td>1份（30毫升）</td>
+                    </tr>
+                    <tr>
+                        <td>蒸汽牛奶</td>
+                        <td>100毫升</td>
+                    </tr>
+                    <tr>
+                        <td>奶泡</td>
+                        <td>100毫升</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 咖啡世界。版权所有。</p>
+    </footer>
+</body>
+</html>
